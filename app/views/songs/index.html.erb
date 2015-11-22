@@ -1,5 +1,7 @@
 <h1>Boombox.rb</h1>
 
+<%= button_to "Suggest a Song", new_song_path, method: :get %>
+
 <ul>
   <% @songs.each do |song| %>
     <li>
