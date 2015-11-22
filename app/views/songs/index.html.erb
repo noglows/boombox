@@ -1,0 +1,9 @@
+<h1>Boombox.rb</h1>
+
+<ul>
+  <% @songs.each do |song| %>
+    <li>
+      <%= song.name %>, Submitted by <%= song.user.name %>
+    </li>
+  <% end %>
+</ul>
