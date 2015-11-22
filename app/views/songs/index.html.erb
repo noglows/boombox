@@ -5,7 +5,10 @@
 <ul>
   <% @songs.each do |song| %>
     <li>
+      <%= button_to "Vote", "/songs/#{song.id}", method: :patch %>
+      <%= song.votes %> :
       <%= song.name %>, Submitted by <%= song.user.name %>
+      <%= link_to "Delete", "/songs/#{song.id}", method: :delete %>
     </li>
   <% end %>
 </ul>
