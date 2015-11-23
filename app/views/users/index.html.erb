@@ -1,0 +1,16 @@
+<table>
+
+<% @users.each do |user| %>
+  <tr>
+    <td>
+      <%= user.name %>
+    </td>
+    <td>
+      <%= user.fav_genres %>
+    </td>
+    <td>
+      <%= user.num_songs %>
+    </td>
+  </tr>
+<% end %>
+</table>

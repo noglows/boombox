@@ -1,0 +1,16 @@
+<h2>Users</h2>
+
+Who are you?
+
+<form action="signed_in_path" method="get">
+  <select>
+    <% @users.each do |user| %>
+      <option value="<%= user.id %>"><%= user.name %> </option>
+    <% end %>
+  </select>
+  <input type="submit" value="Log In">
+</form>
+
+Not listed?
+
+<%= link_to "Add a User", new_user_path, method: :get %>

@@ -3,6 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 body {
   margin: 0;
+  font-family: 'Montserrat', sans-serif;
 }
 
 h1 {
@@ -36,4 +37,70 @@ h1 {
 .page-header {
   font-size: 120px;
   color: #FFFFFF;
+}
+
+.button-title-box {
+  position: absolute;
+  top: 320px;
+  left: 0;
+  text-align: center;
+  width: 100%;
+}
+
+.add-song-button {
+  color: #FFFFFF;
+  font-size: 30px;
+  border: 2px white solid;
+  border-radius: 15px;
+  text-decoration: none;
+  padding: 5px 20px 5px 20px;
+}
+
+.song-list {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: solid;
+  border-color: black;
+  border-width: 0px 2px 2px 2px;
+}
+
+.song-item {
+
+}
+
+td {
+  height: 40px;
+}
+
+#song-name {
+  width: 50%;
+}
+
+#song-name-title {
+
+}
+
+#song-votes {
+  border: 1px solid black;
+  border-radius: 15px;
+  text-align: center;
+}
+
+#song-artist {
+  width: 30%;
+  padding-right: 10px;
+  text-align: center;
+}
+
+.song-user {
+  width: 20%;
+  text-align: right;
+}
+
+#delete-button {
+  width: 10%;
+  color:black;
+  text-align: right;
+  border: 1px black solid;
 }

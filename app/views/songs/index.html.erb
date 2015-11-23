@@ -6,15 +6,60 @@
   <h1 class="page-header">boombox.rb</h1>
 </div>
 
-<%= button_to "Suggest a Song", new_song_path, method: :get %>
+<% if @signed_in %>
+  <div class="button-title-box">
+    <%= link_to "Suggest a Song", new_song_path, method: :get, class: "add-song-button" %>
+  </div>
+<% else %>
+  <div class="button-title-box">
+    <%= link_to "Sign In", "/users/signin", method: :get, class: "add-song-button" %>
+  </div>
+<% end %>
 
-<ul>
+
+<div class="song-list">
+
+<table>
+  <thead>
+    <tr>
+      <th>
+      </th>
+      <th>
+        Votes
+      </th>
+      <th id="song-name-title">
+        Song
+      </th>
+      <th>
+        Artist
+      </th>
+      <th class="song-user">
+        Submitted By
+      </th>
+    </tr>
+  </thead>
   <% @songs.each do |song| %>
-    <li>
-      <%= button_to "Vote", "/songs/#{song.id}", method: :patch %>
-      <%= song.votes %> :
-      <%= song.name %>, Submitted by <%= song.user.name %>
-      <%= link_to "Delete", "/songs/#{song.id}", method: :delete %>
-    </li>
+    <tr class="song-item">
+      <td>
+        <%= button_to("/songs/#{song.id}", method: :patch, title: "Upvote"){fa_icon("thumbs-up lg")} %>
+      </td>
+      <td id="song-votes">
+        <%= song.votes %>
+      </td>
+      <td id="song-name">
+        <%= song.name %>
+      </td>
+      <td id="song-artist">
+        <%= song.artist %>
+      </td>
+      <td class="song-user">
+        <%= song.user.name %>
+      </td>
+      <td id="delete-button">
+        <%= link_to("/songs/#{song.id}", method: :delete, onclick: "return confirm('Are you sure?')", title: "Delete") {fa_icon("minus-circle")} %>
+      </td>
+    </tr>
   <% end %>
-</ul>
+</table>
+
+</div>
