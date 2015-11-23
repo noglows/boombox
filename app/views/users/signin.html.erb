@@ -2,7 +2,12 @@
 
 Who are you?
 
-<form action="signed_in_path" method="get">
+<%= form_for @user, url:({action: "signed_in"}) do |f| %>
+  <%= f.collection_select(:id, User.all, :id, :name, prompt: "Select your name: ") %>
+  <%= f.submit %>
+<% end %>
+
+<form action="signed_in" method="post">
   <select>
     <% @users.each do |user| %>
       <option value="<%= user.id %>"><%= user.name %> </option>
@@ -11,6 +16,7 @@ Who are you?
   <input type="submit" value="Log In">
 </form>
 
+<br>
 Not listed?
-
+<br>
 <%= link_to "Add a User", new_user_path, method: :get %>

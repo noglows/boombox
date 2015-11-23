@@ -6,7 +6,7 @@
   <h1 class="page-header">boombox.rb</h1>
 </div>
 
-<% if @signed_in %>
+<% if session[:user_id] != nil %>
   <div class="button-title-box">
     <%= link_to "Suggest a Song", new_song_path, method: :get, class: "add-song-button" %>
   </div>
