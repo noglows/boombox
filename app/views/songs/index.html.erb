@@ -6,11 +6,18 @@
   <h1 class="page-header">boombox.rb</h1>
 </div>
 
+<div class="logout">
+  <%= link_to "Logout", "/users/logout", class: "logout-link" %>
+</div>
+
+
 <% if session[:user_id] != nil %>
+  <span id="hi-name">Hi <%= User.find(session[:user_id]).name %></span>
   <div class="button-title-box">
     <%= link_to "Suggest a Song", new_song_path, method: :get, class: "add-song-button" %>
   </div>
 <% else %>
+
   <div class="button-title-box">
     <%= link_to "Sign In", "/users/signin", method: :get, class: "add-song-button" %>
   </div>

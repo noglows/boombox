@@ -5,12 +5,15 @@ class UsersController < ApplicationController
   end
 
   def signed_in
-    #binding.pry
     new_params = user_params[:user]
     session[:user_id] = new_params[:id]
     redirect_to "/songs"
   end
 
+  def logout
+    session.clear
+    redirect_to "/songs"
+  end
 
   private
 

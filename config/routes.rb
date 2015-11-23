@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :songs
   get '/users/signin' => 'users#signin'
   post '/users/signed_in' => 'users#signed_in', as: :signed_in
+  get '/users/logout' => 'users#logout' 
   get '/users/new' => 'users#new', as: :new_user
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
