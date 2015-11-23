@@ -8,7 +8,6 @@
   <%= f.label :comments %>
   <%= f.text_area :comments %> <br>
 
-  <%= f.label :user %>
-  <%= f.collection_select(:user_id, @users, :id, :name, prompt: "Select the user") %>
+
   <%= f.submit %>
 <% end %>

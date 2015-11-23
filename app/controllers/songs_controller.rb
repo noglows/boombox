@@ -11,6 +11,7 @@ class SongsController < ApplicationController
   def create
     new_params = song_params[:song]
     new_params[:votes] = 0
+    new_params[:user_id] = session[:user_id]
     Song.create(new_params)
     redirect_to "/songs"
   end

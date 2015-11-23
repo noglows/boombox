@@ -1,0 +1,7 @@
+<%= form_for @user, url:({action: "#{@action}"}) do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.label :fav_genres %>
+  <%= f.text_field :fav_genres %>
+  <%= f.submit %>
+<% end %>

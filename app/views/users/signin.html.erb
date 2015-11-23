@@ -7,15 +7,6 @@ Who are you?
   <%= f.submit %>
 <% end %>
 
-<form action="signed_in" method="post">
-  <select>
-    <% @users.each do |user| %>
-      <option value="<%= user.id %>"><%= user.name %> </option>
-    <% end %>
-  </select>
-  <input type="submit" value="Log In">
-</form>
-
 <br>
 Not listed?
 <br>
