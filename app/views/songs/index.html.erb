@@ -63,7 +63,6 @@
         <%= song.user.name %>
       </td>
       <td id="delete-button">
-        <% binding.pry %>
         <% if song.user.id == session[:user_id].to_i %>
 
           <%= link_to("/songs/#{song.id}", method: :delete, onclick: "return confirm('Are you sure you want to remove this song?')", title: "Delete") {fa_icon("minus-circle")} %>
