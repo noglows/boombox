@@ -1,13 +1,46 @@
-<h2> Enter song details </h2>
-<%= form_for @song do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %> <br>
-  <%= f.label :artist %>
-  <%= f.text_field :artist %> <br>
+<div class="small-image-container smaller-title-box">
+  <%= image_tag("music_4.jpeg", class: "hero-image") %>
+</div>
 
-  <%= f.label :comments %>
-  <%= f.text_area :comments %> <br>
+<div class="smaller-page-title-box">
+  <h1 class="page-header">suggest a song</h1>
+</div>
 
+<div class="logout">
+  <%= link_to "Cancel", "/songs", class: "logout-link" %>
+</div>
 
-  <%= f.submit %>
+<div class="add-song-form-box">
+
+<%= form_for @song, class:"add-song-form" do |f| %>
+<table>
+  <tr>
+    <td>
+      <%= f.label :name %>
+    </td>
+    <td class="text-field-table">
+      <%= f.text_field :name, class:"text-field-text" %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= f.label :artist %>
+    </td>
+    <td class="text-field-table">
+      <%= f.text_field :artist, class:"text-field-text" %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= f.label :comments %>
+    </td>
+    <td class="text-field-table">
+      <%= f.text_field :comments, class:"text-field-text" %> <br>
+    </td>
+  </tr>
+</table>
+
+  <%= f.submit "Suggest this song" %>
 <% end %>
+
+</div>

@@ -17,6 +17,13 @@ h1 {
   margin: 0;
 }
 
+.small-image-container {
+  height: 200px;
+  width: 100%;
+  overflow: hidden;
+  margin: 0;
+}
+
 .hero-image {
   width: 100%;
   filter: grayscale(50%);
@@ -32,6 +39,19 @@ h1 {
   left: 0;
   text-align: center;
   width: 100%;
+}
+
+.smaller-title-box {
+  height: 200px;
+}
+
+.smaller-page-title-box {
+  position: absolute;
+  left: 0;
+  text-align: center;
+  width: 100%;
+  top: -30px;
+  height:200px;
 }
 
 .logout {
@@ -100,7 +120,7 @@ td {
 }
 
 #song-name-title {
-
+  text-align: left;
 }
 
 #song-votes {
@@ -123,4 +143,36 @@ td {
 #delete-button {
   color:black;
   text-align: right;
+}
+
+.add-song-form-box {
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+
+.text-field-table {
+  width: 80%;
+  height: 40px;
+  border: none;
+  -webkit-appearance: none;
+  //border:none;
+  // border: 1px solid black;
+  //
+	// -moz-border-radius: 10px;
+	// -webkit-border-radius: 10px;
+	// border-radius: 10px;
+	// font-size: 20px;
+	// padding: 4px 7px;
+	// outline: none;
+	// -webkit-appearance: none;
+
+}
+
+.text-field-text {
+  width: 100%;
+  height: 40px;
+  font-size: 20px;
 }

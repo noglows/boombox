@@ -1,13 +1,28 @@
-<h2>Users</h2>
+<div class="small-image-container smaller-title-box">
+  <%= image_tag("music_2.jpeg", class: "hero-image") %>
+</div>
 
-Who are you?
+<div class="smaller-page-title-box">
+  <h1 class="page-header">users</h1>
+</div>
 
-<%= form_for @user, url:({action: "signed_in"}) do |f| %>
-  <%= f.collection_select(:id, User.all, :id, :name, prompt: "Select your name: ") %>
-  <%= f.submit %>
+<div class="logout">
+  <%= link_to "Cancel", "/songs", class: "logout-link" %>
+</div>
+
+
+<div class="add-song-form-box">
+
+<h2>Who are you?</h2>
+
+<%= form_for @user, url:({action: "signed_in"}), class:"add-song-form" do |f| %>
+
+      <%= f.collection_select(:id, User.all, :id, :name, prompt: "Select your name: ")  %>
+
+  <%= f.submit "Login" %>
 <% end %>
 
-<br>
-Not listed?
-<br>
+<h3>Not listed?</h3>
 <%= link_to "Add a User", new_user_path, method: :get %>
+
+</div>

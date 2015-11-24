@@ -1,7 +1,39 @@
+<div class="small-image-container smaller-title-box">
+  <%= image_tag("music_3.jpeg", class: "hero-image") %>
+</div>
+
+<div class="smaller-page-title-box">
+  <h1 class="page-header">add a user</h1>
+</div>
+
+<div class="logout">
+  <%= link_to "Cancel", "/songs", class: "logout-link" %>
+</div>
+
+<div class="add-song-form-box">
+
 <%= form_for @user, url:({action: "#{@action}"}) do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.label :fav_genres %>
-  <%= f.text_field :fav_genres %>
-  <%= f.submit %>
+<table>
+  <tr>
+    <td>
+      <%= f.label :name %>
+    </td>
+    <td class="text-field-table">
+      <%= f.text_field :name, class:"text-field-text" %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= f.label :fav_genres, "Favorite genres" %>
+    </td>
+    <td class="text-field-table">
+      <%= f.text_field :fav_genres, class:"text-field-text" %>
+    </td>
+  </tr>
+
+</table>
+
+  <%= f.submit "Create user" %>
 <% end %>
+
+</div>
