@@ -1,11 +1,27 @@
 class SongsController < ApplicationController
   def index
     @songs = Song.order(votes: :desc)
+    song_urls = []
+    @songs.each do |song|
+      song.song_url.slice!"https://www.youtube.com/watch?v="
+      song_urls.push(song.song_url)
+    end
+    @first_song = song_urls[0]
+    song_urls.delete_at(0)
+    @song_urls_list = ""
+    song_urls.each do |url|
+      @song_urls_list += ","
+      @song_urls_list += url
+    end
+    @song_urls_list.slice!(0)
+
     if session[:user_id] != nil
       id = session[:user_id]
       @user = User.find(id)
       @voted_for = @user.voted_for
-      @voted_for = eval(@voted_for)
+      if @voted_for != nil
+        @voted_for = eval(@voted_for)
+      end
       # if @voted_for != nil
       #   @voted_for = @voted_for.split(",")
       #   @voted_for[0] = @voted_for[0].tr("[", "")
