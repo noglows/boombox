@@ -48,7 +48,16 @@
   <% @songs.each do |song| %>
     <tr class="song-item">
       <td>
-        <%= button_to("/songs/#{song.id}", method: :patch, title: "Upvote"){fa_icon("thumbs-up lg")} %>
+        <% if session[:user_id] != nil %>
+          <% if @voted_for != nil %>
+            <% if !@voted_for.include? song.id %>
+                <%= button_to("/songs/#{song.id}", method: :patch, title: "Upvote"){fa_icon("thumbs-up lg")} %>
+            <% end %>
+          <% else %>
+            <%= button_to("/songs/#{song.id}", method: :patch, title: "Upvote"){fa_icon("thumbs-up lg")} %>
+          <% end %>
+        <% end %>
+
       </td>
       <td id="song-votes">
         <%= song.votes %>
