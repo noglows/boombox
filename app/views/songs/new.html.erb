@@ -12,7 +12,7 @@
 
 <div class="add-song-form-box">
 
-<%= form_for @song, class:"add-song-form" do |f| %>
+<%= form_for @song, class:"add-song-form", url:({action: "#{@action}"}) do |f| %>
 <table>
   <tr>
     <td>

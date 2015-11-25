@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   get '/users/:id' => 'users#show', as: :user
   delete '/users/:id/songs/:song_id' => 'users#destroy'
   patch '/users/:id/songs/:song_id' => 'users#update'
+  get '/users/:id/songs/new' => 'users#add_user_song', as: :add_user_song
+  post '/users/:id/songs' => 'users#user_song_create'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

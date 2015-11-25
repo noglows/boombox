@@ -72,7 +72,7 @@
 <footer>
   <% if session[:user_id] == @id %>
     <div class="button-title-box-user">
-      <%= link_to "Suggest a Song", new_song_path, method: :get, class: "add-song-button-user" %>
+      <%= link_to "Suggest a Song", add_user_song_path, method: :get, class: "add-song-button-user" %>
     </div>
   <% end %>
 

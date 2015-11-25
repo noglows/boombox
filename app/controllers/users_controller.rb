@@ -62,7 +62,6 @@ class UsersController < ApplicationController
     song = Song.find(song_id)
     num_votes = song.votes + 1
     song.update(votes: num_votes)
-    #user_id = session[:user_id]
     user = User.find(id)
     votes = user.voted_for
     if votes == nil
@@ -88,9 +87,30 @@ class UsersController < ApplicationController
     redirect_to "/users/#{id}"
   end
 
+  def add_user_song
+    @action = "user_song_create"
+    @song = Song.new
+    render "songs/new"
+    #@users = User.all
+  end
+
+  def user_song_create
+    binding.pry
+    new_params = song_params[:song]
+    user_id = session[:user_id]
+    new_params[:votes] = 0
+    new_params[:user_id] = session[:user_id]
+    Song.create(new_params)
+    redirect_to "/users/#{user_id}"
+  end
+
   private
 
   def user_params
     params.permit(user:[:id, :name, :fav_genres])
+  end
+
+  def song_params
+    params.permit(song:[:id, :name, :artist, :song_url])
   end
 end
