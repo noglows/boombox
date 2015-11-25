@@ -69,7 +69,7 @@
         <%= song.artist %>
       </td>
       <td class="song-user">
-        <%= song.user.name %>
+        <%= link_to song.user.name, user_path(song.user_id)  %>
       </td>
       <td id="delete-button">
         <% if song.user.id == session[:user_id].to_i %>

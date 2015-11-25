@@ -1,0 +1,72 @@
+<div class="small-image-container smaller-title-box">
+  <%= image_tag("music_1.jpeg", class: "hero-image") %>
+</div>
+
+<div class="smaller-page-title-box">
+  <h1 class="page-header">user details</h1>
+</div>
+
+<div class="logout">
+  <%= link_to "Cancel", "/songs", class: "logout-link" %>
+</div>
+
+<div class="song-list">
+
+<table>
+  <thead>
+    <tr>
+      <th>
+      </th>
+      <th>
+      Votes
+      </th>
+      <th id="song-name-title">
+        &nbsp; &nbsp; Song
+      </th>
+      <th>
+        Artist
+      </th>
+      <th class="song-user">
+        Submitted By
+      </th>
+    </tr>
+  </thead>
+  <% @user_songs.each do |song| %>
+    <tr class="song-item">
+      <td>
+        <% if session[:user_id] != nil %>
+          <% if @voted_for != nil %>
+            <% if !@voted_for.include? song.id %>
+                <%= button_to("/songs/#{song.id}", method: :patch, title: "Upvote"){fa_icon("thumbs-up lg")} %>
+            <% end %>
+          <% else %>
+            <%= button_to("/songs/#{song.id}", method: :patch, title: "Upvote"){fa_icon("thumbs-up lg")} %>
+          <% end %>
+        <% end %>
+
+      </td>
+      <td id="song-votes">
+        <%= song.votes %>
+      </td>
+      <td id="song-name">
+        <%= song.name %>
+      </td>
+      <td id="song-artist">
+        <%= song.artist %>
+      </td>
+      <td class="song-user">
+        <%= link_to song.user.name, user_path(song.user_id)  %>
+      </td>
+      <td id="delete-button">
+
+        <% if song.user.id == session[:user_id].to_i %>
+        <% binding.pry %>
+
+          <%= link_to("/users/#{@id}/songs/#{song.id}", method: :delete, onclick: "return confirm('Are you sure you want to remove this song?')", title: "Delete") {fa_icon("minus-circle")} %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+</div>

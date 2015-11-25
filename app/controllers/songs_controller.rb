@@ -22,11 +22,6 @@ class SongsController < ApplicationController
       if @voted_for != nil
         @voted_for = eval(@voted_for)
       end
-      # if @voted_for != nil
-      #   @voted_for = @voted_for.split(",")
-      #   @voted_for[0] = @voted_for[0].tr("[", "")
-      #   @voted_for[-1] = @voted_for[-1].tr("]", "")
-      # end
     end
   end
 
@@ -64,32 +59,15 @@ class SongsController < ApplicationController
     else
       array = votes
       array = eval(array)
-      #array.split!
-      #binding.pry
-      #votes = votes.split(",")
-      #binding.pry
-      #votes.each do |vote|
-      #  vote.delete!'[]'
-      #  vote.delete!'\"'
-      #  binding.pry
-      #  vote.strip!
-      #end
-      #votes[0] = votes[0].tr("[", "")
-      #binding.pry
-      #votes[-1] = votes[-1].tr("]", "")
-      #binding.pry
       array.push(id.to_i)
       array.each do |vote|
         vote = vote.to_i
       end
-      binding.pry
       user.update(voted_for: array)
-      binding.pry
     end
-
-
     redirect_to "/songs"
   end
+
 
   private
 
