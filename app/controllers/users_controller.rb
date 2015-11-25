@@ -56,12 +56,35 @@ class UsersController < ApplicationController
       end
   end
 
+  def update
+    id = params[:id]
+    song_id = params[:song_id]
+    song = Song.find(song_id)
+    num_votes = song.votes + 1
+    song.update(votes: num_votes)
+    #user_id = session[:user_id]
+    user = User.find(id)
+    votes = user.voted_for
+    if votes == nil
+      new_array = []
+      new_array.push(song_id.to_i)
+      user.update(voted_for: new_array)
+    else
+      array = votes
+      array = eval(array)
+      array.push(song_id.to_i)
+      array.each do |vote|
+        vote = vote.to_i
+      end
+      user.update(voted_for: array)
+    end
+    redirect_to "/users/#{id}"
+  end
+
   def destroy
-    binding.pry
     id = params[:id]
     song_id = params[:song_id]
     Song.destroy(song_id)
-    binding.pry
     redirect_to "/users/#{id}"
   end
 
