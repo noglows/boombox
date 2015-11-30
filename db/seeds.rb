@@ -7,15 +7,20 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 sample_songs = [
-  {name: "Mistakes Like This", artist: "Prelow", votes: 0, user_id: 1, song_url: "https://www.youtube.com/watch?v=VjRb3RjqncQ", url_duration: "3:09"},
-  {name: "Classic", artist: "The Knocks", votes: 0, user_id: 1, song_url: "https://www.youtube.com/watch?v=emOKaGi8u5U", url_duration: "4:09"},
-  {name: "Mark My Words", artist: "Justin Bieber", votes: 0, user_id: 1, song_url: "https://www.youtube.com/watch?v=kjUQjq1CBi0", url_duration: "3:03"},
-  {name: "Flashed Junk Mind", artist: "Milky Chance", votes: 0, user_id: 2, song_url: "https://www.youtube.com/watch?v=r8BsuT0PWdI", url_duration: "3:58"}
+  {name: "Mistakes Like This", artist: "Prelow", votes: 0, user_id: 1, song_url: "https://www.youtube.com/watch?v=VjRb3RjqncQ"},
+  {name: "Classic", artist: "The Knocks", votes: 0, user_id: 1, song_url: "https://www.youtube.com/watch?v=emOKaGi8u5U"},
+  {name: "2AM", artist: "Astrid S", votes: 0, user_id: 1, song_url: "https://www.youtube.com/watch?v=7MJDQMjYCaI"},
+  {name: "Flashed Junk Mind", artist: "Milky Chance", votes: 0, user_id: 1, song_url: "https://www.youtube.com/watch?v=r8BsuT0PWdI"},
+  {name: "Por Fin De Encontre", artist: "Juan Magan", votes: 0, user_id: 2, song_url: "https://www.youtube.com/watch?v=_kxz7WX4mLU"},
+  {name: "I Choose U", artist: "Timeflies", votes: 0, user_id: 2, song_url: "https://www.youtube.com/watch?v=68jvPefuDxE"},
+  {name: "Who Let the Dogs Out", artist: "Bahamen", votes: 0, user_id: 3, song_url: "https://www.youtube.com/watch?v=Qkuu0Lwb5EM"}
+
 ]
 
 sample_users = [
   {name: "Jessica", fav_genres: "rap"},
-  {name: "Kepler", fav_genres: "classical"}
+  {name: "Lolita", fav_genres: "reggaeton"},
+  {name: "Kepler"}
 ]
 
 sample_songs.each do |song|
