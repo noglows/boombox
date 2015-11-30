@@ -1,14 +1,16 @@
 <div class="image-container">
-  <%= image_tag("music_5.jpeg", class: "hero-image") %>
+  <%= image_tag("app/assets/images/music_5.jpeg", class: "hero-image") %>
 </div>
 
 <div class="page-title-box">
   <h1 class="page-header">boombox.rb</h1>
 </div>
 
+<% if session[:user_id] != nil %>
 <div class="logout">
   <%= link_to "Logout", "/users/logout", class: "logout-link" %>
 </div>
+<% end %>
 
 
 <% if session[:user_id] != nil %>
