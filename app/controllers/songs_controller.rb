@@ -53,6 +53,7 @@ class SongsController < ApplicationController
     user_id = session[:user_id]
     user = User.find(user_id)
     votes = user.voted_for
+    
     if votes == nil
       new_array = []
       new_array.push(id.to_i)
