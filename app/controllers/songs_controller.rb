@@ -4,7 +4,7 @@ class SongsController < ApplicationController
     song_urls = []
     @songs.each do |song|
       song.song_url.slice!"https://www.youtube.com/watch?v="
-      song.sorg_url.slice!"https://youtu.be/"
+      song.song_url.slice!"https://youtu.be/"
       song_urls.push(song.song_url)
     end
     @first_song = song_urls[0]
