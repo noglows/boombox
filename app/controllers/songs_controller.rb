@@ -36,8 +36,14 @@ class SongsController < ApplicationController
     new_params = song_params[:song]
     new_params[:votes] = 0
     new_params[:user_id] = session[:user_id]
-    Song.create(new_params)
-    redirect_to "/songs"
+    @song = Song.new(new_params)
+    if @song.save
+      redirect_to "/songs"
+    else
+      #@song = Song.new
+      @action = "create"
+      render "new"
+    end
   end
 
   def destroy

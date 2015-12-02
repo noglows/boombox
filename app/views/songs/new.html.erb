@@ -10,6 +10,21 @@
   <%= link_to "Cancel", "/songs", class: "logout-link" %>
 </div>
 
+<% if !@song.nil? %>
+<ul>
+  <% @song.errors.each do |column, message| %>
+    <li>
+      <% if column == :song_url %>
+        <strong>Link</strong>
+      <% else %>
+        <strong><%= column.capitalize %></strong>
+      <% end %>
+     <%= message %>
+    </li>
+  <% end %>
+</ul>
+<% end %>
+
 <div class="add-song-form-box">
 
 <%= form_for @song, class:"add-song-form", url:({action: "#{@action}"}) do |f| %>
@@ -19,7 +34,7 @@
       <%= f.label :name %>
     </td>
     <td class="text-field-table">
-      <%= f.text_field :name, required: true, class:"text-field-text" %>
+      <%= f.text_field :name, class:"text-field-text" %>
     </td>
   </tr>
   <tr>
@@ -27,7 +42,7 @@
       <%= f.label :artist %>
     </td>
     <td class="text-field-table">
-      <%= f.text_field :artist, required: true, class:"text-field-text" %>
+      <%= f.text_field :artist, class:"text-field-text" %>
     </td>
   </tr>
   <tr>

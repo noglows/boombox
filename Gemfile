@@ -34,6 +34,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Other Gems
 gem 'font-awesome-rails'
 gem 'pg'
+gem 'validates_url_format_of', '~> 0.4.1'
 
 gem 'rails_12factor'
 
