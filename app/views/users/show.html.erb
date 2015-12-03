@@ -1,18 +1,25 @@
-<div class="small-image-container smaller-title-box">
-  <%= image_tag("music_1.jpeg", class: "hero-image") %>
+<div class="jumbotron special-jum jumbotron-user-index">
+
+
+  <div class="logout">
+    <%= link_to "Home", "/songs", class: "logout-link" %>
+  </div>
+
+
+  <h1 class="second-title">user details</h1>
+
+  <div class="col-md-4"></div>
+  <div class="col-md-4 signed-in"></div>
+  <div class="col-md-4"></div>
 </div>
 
-<div class="smaller-page-title-box">
-  <h1 class="page-header">user details</h1>
-</div>
 
-<div class="logout">
-  <%= link_to "Cancel", "/songs", class: "logout-link" %>
-</div>
+<div class="container">
 
-<div class="song-list">
+<div class="row">
 
-<table>
+
+<table class="table">
   <thead>
     <tr>
       <th>
@@ -29,6 +36,11 @@
       <th class="song-user">
         Submitted By
       </th>
+      <% if session[:user_id] != nil %>
+      <th>
+        Delete
+      </th>
+      <% end %>
     </tr>
   </thead>
   <% @user_songs.each do |song| %>
@@ -37,10 +49,10 @@
         <% if session[:user_id] != nil %>
           <% if @voted_for != nil %>
             <% if !@voted_for.include? song.id %>
-                <%= button_to("/users/#{@id}/songs/#{song.id}", method: :patch, title: "Upvote"){fa_icon("thumbs-up lg")} %>
+                <%= button_to("/songs/#{song.id}", method: :patch, title: "Upvote"){fa_icon("thumbs-up lg")} %>
             <% end %>
           <% else %>
-            <%= button_to("/users/#{@id}/songs/#{song.id}", method: :patch, title: "Upvote"){fa_icon("thumbs-up lg")} %>
+            <%= button_to("/songs/#{song.id}", method: :patch, title: "Upvote"){fa_icon("thumbs-up lg")} %>
           <% end %>
         <% end %>
 
@@ -58,9 +70,9 @@
         <%= link_to song.user.name, user_path(song.user_id)  %>
       </td>
       <td id="delete-button">
-
         <% if song.user.id == session[:user_id].to_i %>
-          <%= link_to("/users/#{@id}/songs/#{song.id}", method: :delete, onclick: "return confirm('Are you sure you want to remove this song?')", title: "Delete") {fa_icon("minus-circle")} %>
+
+          <%= button_to("/songs/#{song.id}", onclick: "return confirm('Are you sure you want to remove this song?')", method: :delete, title: "Delete") {fa_icon("minus-circle")} %>
         <% end %>
       </td>
     </tr>
@@ -69,14 +81,18 @@
 
 </div>
 
-<footer>
+<div class="row">
   <% if session[:user_id] == @id %>
-    <div class="button-title-box-user">
-      <%= link_to "Suggest a Song", add_user_song_path, method: :get, class: "add-song-button-user" %>
+    <div class="center-button">
+      <%= link_to "Suggest a Song", add_user_song_path, method: :get, class: "btn btn-default text-center" %>
     </div>
   <% end %>
+</div>
 
-  <iframe class="video-player" width="420" height="315" frameborder="0" autoplay
-  src="https://www.youtube.com/embed/<%= @first_song %>?playlist=<%= @song_urls_list %>&autoplay=1&modestbranding=1&color=white&iv_load_policy=3">
+
+    <iframe class="video-player su-youtube su-responsive-media-yes" width="420" height="315" frameborder="0" autoplay
+    src="https://www.youtube.com/embed/<%= @first_song %>?playlist=<%= @song_urls_list %>&modestbranding=1&color=white&iv_load_policy=3">
 </iframe>
-</footer>
+
+
+</div>

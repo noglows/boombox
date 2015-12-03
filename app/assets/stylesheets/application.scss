@@ -1,0 +1,94 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+
+ */
+
+ /*
+ *= require font-awesome
+ */
+
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+
+
+ .jumbotron-index {
+   background: url(music_5.jpeg);
+   background-size: cover;
+   height: 300px;
+ }
+
+ .jumbotron-new {
+   background: url(music_4.jpeg);
+   background-size: cover;
+   height: 200px;
+ }
+
+ .jumbotron-new-user {
+   background: url(music_3.jpeg);
+   background-size: cover;
+   height: 200px;
+ }
+
+ .jumbotron-signin {
+   background: url(music_2.jpeg);
+   background-size: cover;
+   height: 200px;
+ }
+
+ .jumbotron-user-index {
+   background: url(music_1.jpeg);
+   background-size: cover;
+   height: 200px;
+
+ }
+
+ .jumbotron .main-title {
+   font-family: 'Righteous';
+   padding-top: 30px;
+   color: white;
+   text-align: center;
+   font-size: 130px;
+   margin-top: -30px;
+ }
+
+ .jumbotron .second-title {
+   font-family: 'Righteous';
+   padding-top: 20px;
+   color: white;
+   text-align: center;
+   font-size: 100px;
+ }
+
+ .special-jum {
+   padding:0!important;
+ }
+
+.logout-link {
+  color:white;
+}
+
+.signed-in {
+  text-align: center;
+  color: white;
+  font-size: 30px;
+}
+
+.su-youtube {
+  margin: 0 auto;
+  display: block;
+}
+
+.center-button {
+  text-align: center;
+  margin-bottom: 20px;
+}

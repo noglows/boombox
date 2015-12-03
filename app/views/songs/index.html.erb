@@ -1,34 +1,41 @@
-<div class="image-container">
-  <%= image_tag("music_5.jpeg", class: "hero-image") %>
-</div>
-
-<div class="page-title-box">
-  <h1 class="page-header">boombox.rb</h1>
-</div>
-
-<% if session[:user_id] != nil %>
-<div class="logout">
-  <%= link_to "Logout", "/users/logout", class: "logout-link" %>
-</div>
-<% end %>
+<div class="jumbotron special-jum jumbotron-index">
 
 
-<% if session[:user_id] != nil %>
-  <span id="hi-name">Hi <%= User.find(session[:user_id]).name %></span>
-  <div class="button-title-box">
-    <%= link_to "Suggest a Song", new_song_path, method: :get, class: "add-song-button" %>
+    <div class="logout">
+      <% if session[:user_id] != nil %>
+        <%= link_to "Logout", "/users/logout", class: "logout-link" %>
+      <% end %>
+    </div>
+
+
+  <h1 class="main-title">boombox.rb</h1>
+
+  <div class="col-md-4"></div>
+  <div class="col-md-4 signed-in">
+
+    <% if session[:user_id] != nil %>
+      <span id="hi-name">Hi, <%= User.find(session[:user_id]).name %></span>
+
+      <div class="button-title-box">
+        <%= button_to "Suggest a Song", new_song_path, method: :get, class: "btn" %>
+      </div>
+    <% else %>
+      <div class="button-title-box">
+        <%= button_to "Sign In", "/users/signin", method: :get, class: "btn" %>
+      </div>
+    <% end %>
   </div>
-<% else %>
 
-  <div class="button-title-box">
-    <%= link_to "Sign In", "/users/signin", method: :get, class: "add-song-button" %>
-  </div>
-<% end %>
+  <div class="col-md-4"></div>
+</div>
 
 
-<div class="song-list">
+<div class="container">
 
-<table>
+<div class="row">
+
+
+<table class="table">
   <thead>
     <tr>
       <th>
@@ -45,6 +52,11 @@
       <th class="song-user">
         Submitted By
       </th>
+      <% if session[:user_id] != nil %>
+      <th>
+        Delete
+      </th>
+      <% end %>
     </tr>
   </thead>
   <% @songs.each do |song| %>
@@ -85,10 +97,9 @@
 
 </div>
 
-
-
-<footer>
-  <iframe class="video-player" width="420" height="315" frameborder="0" autoplay
-  src="https://www.youtube.com/embed/<%= @first_song %>?playlist=<%= @song_urls_list %>&autoplay=1&modestbranding=1&color=white&iv_load_policy=3">
+    <iframe class="video-player su-youtube su-responsive-media-yes" width="420" height="315" frameborder="0" autoplay
+    src="https://www.youtube.com/embed/<%= @first_song %>?playlist=<%= @song_urls_list %>&modestbranding=1&color=white&iv_load_policy=3">
 </iframe>
-</footer>
+
+
+</div>
