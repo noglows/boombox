@@ -96,3 +96,17 @@
 .row-height {
   height: 50px;
 }
+
+a {
+  color: red;
+  font-weight: bolder;
+}
+
+a:hover {
+  color:black;
+}
+
+body {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 16px;
+}
