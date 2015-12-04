@@ -54,6 +54,9 @@
     </td>
   </tr>
 </table>
+<%= f.hidden_field :votes, :value => 0 %>
+<%= f.hidden_field :user_id, :value => session[:user_id] %>
+<% binding.pry %>
 
   <%= f.submit "Suggest this song" %>
 <% end %>

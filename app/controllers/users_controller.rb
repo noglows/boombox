@@ -21,62 +21,43 @@ class UsersController < ApplicationController
   end
 
   def create
-    User.create(user_params[:user])
-    new_name = user_params[:user][:name]
-    user = User.where(name: new_name)
-    session[:user_id] = user[0].id
-    redirect_to "/songs"
+    @user = User.new(user_params[:user])
+    if @user.save
+      session[:user_id] = User.last.id
+      redirect_to "/songs"
+    else
+      @action = "create"
+      render "new"
+    end
   end
 
   def show
-      @id = params[:id]
-      @user_songs = Song.where(user_id: @id).order(votes: :desc)
+    @id = params[:id]
+    @user_songs = Song.where(user_id: @id).order(votes: :desc)
 
-      song_urls = []
-      @user_songs.each do |song|
-        song.song_url.slice!"https://www.youtube.com/watch?v="
-        song_urls.push(song.song_url)
-      end
-      @first_song = song_urls[0]
-      song_urls.delete_at(0)
-      @song_urls_list = ""
-      song_urls.each do |url|
-        @song_urls_list += ","
-        @song_urls_list += url
-      end
-      @song_urls_list.slice!(0)
+    @first_song, @song_urls_list = Song.return_user_urls(@id)
 
-      if session[:user_id] != nil
-        id = session[:user_id]
-        @user = User.find(id)
-        @voted_for = @user.voted_for
-        if @voted_for != nil
-          @voted_for = eval(@voted_for)
-        end
+    if session[:user_id] != nil
+      id = session[:user_id]
+      @user = User.find(id)
+      @voted_for = @user.voted_for
+      if @voted_for != nil
+        @voted_for = eval(@voted_for)
       end
+    end
   end
 
   def update
     id = params[:id]
     song_id = params[:song_id]
+
     song = Song.find(song_id)
+
     num_votes = song.votes + 1
     song.update(votes: num_votes)
-    user = User.find(id)
-    votes = user.voted_for
-    if votes == nil
-      new_array = []
-      new_array.push(song_id.to_i)
-      user.update(voted_for: new_array)
-    else
-      array = votes
-      array = eval(array)
-      array.push(song_id.to_i)
-      array.each do |vote|
-        vote = vote.to_i
-      end
-      user.update(voted_for: array)
-    end
+
+    user = User.find(session[:user_id])
+    user.update_voted_for(song_id)
     redirect_to "/users/#{id}"
   end
 
@@ -95,7 +76,6 @@ class UsersController < ApplicationController
   end
 
   def user_song_create
-    binding.pry
     new_params = song_params[:song]
     user_id = session[:user_id]
     new_params[:votes] = 0
