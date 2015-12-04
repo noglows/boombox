@@ -72,26 +72,16 @@ class UsersController < ApplicationController
     @action = "user_song_create"
     @song = Song.new
     render "songs/new"
-    binding.pry
-    #@users = User.all
   end
 
   def user_song_create
     @song = Song.new(song_params[:song])
-    binding.pry
     if @song.save
       redirect_to "/users/#{session[:user_id]}"
     else
       @action = "create"
       render "new"
     end
-    # new_params = song_params[:song]
-    # user_id = session[:user_id]
-    # new_params[:votes] = 0
-    # new_params[:user_id] = session[:user_id]
-    # Song.create(new_params)
-    # redirect_to "/users/#{user_id}"
-
   end
 
   private
