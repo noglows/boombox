@@ -1,0 +1,3 @@
+- Control new user form
+- Add passwords
+- Finish Bootstrap

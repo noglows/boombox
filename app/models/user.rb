@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
 
   has_many :songs
 
+  validates :name, presence: true
+
   # validates :name, presence: true
   # validates :name, length: { minimum: 3}
   def update_voted_for(song_id)
