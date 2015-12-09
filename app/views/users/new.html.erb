@@ -1,39 +1,47 @@
-<div class="small-image-container smaller-title-box">
-  <%= image_tag("music_3.jpeg", class: "hero-image") %>
+<div class="jumbotron special-jum jumbotron-new-user">
+
+  <div class="logout">
+    <%= link_to "Cancel", "/songs", class: "logout-link" %>
+  </div>
+
+  <h1 class="second-title">add a user</h1>
+
+  <div class="col-md-4"></div>
+  <div class="col-md-4 signed-in"></div>
+  <div class="col-md-4"></div>
+
 </div>
 
-<div class="smaller-page-title-box">
-  <h1 class="page-header">add a user</h1>
+
+<div class="container">
+
+<div class="row">
+  <div class="col-md-4"></div>
+  <div class="col-md-4">
+    Need to add errors
+  </div>
+  <div class="col-md-4"></div>
+
 </div>
 
-<div class="logout">
-  <%= link_to "Cancel", "/songs", class: "logout-link" %>
-</div>
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
 
-<div class="add-song-form-box">
+        <%= form_for @user, url:({action: "#{@action}"}) do |f| %>
+        <div class="form-group">
+          <%= f.label :name %>
+          <%= f.text_field :name, class:"form-control" %>
+        </div>
+        <div class="form-group">
 
-<%= form_for @user, url:({action: "#{@action}"}) do |f| %>
-<table>
-  <tr>
-    <td>
-      <%= f.label :name %>
-    </td>
-    <td class="text-field-table">
-      <%= f.text_field :name, required: true, class:"text-field-text" %>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <%= f.label :fav_genres, "Favorite genres" %>
-    </td>
-    <td class="text-field-table">
-      <%= f.text_field :fav_genres, class:"text-field-text" %>
-    </td>
-  </tr>
+          <%= f.label :fav_genres, "Favorite genres" %>
+          <%= f.text_field :fav_genres, class:"form-control" %>
+        </div>
+          <%= f.submit "Create user", class:"btn btn-default" %>
+        <% end %>
 
-</table>
-
-  <%= f.submit "Create user" %>
-<% end %>
-
+    </div>
+    <div class="col-md-2"></div>
+  </div>
 </div>

@@ -1,28 +1,43 @@
-<div class="small-image-container smaller-title-box">
-  <%= image_tag("music_2.jpeg", class: "hero-image") %>
+<div class="jumbotron special-jum jumbotron-signin">
+
+  <div class="logout">
+    <%= link_to "Cancel", "/songs", class: "logout-link" %>
+  </div>
+
+  <h1 class="second-title">sign in</h1>
+
+  <div class="col-md-4"></div>
+  <div class="col-md-4 signed-in"></div>
+  <div class="col-md-4"></div>
+
 </div>
 
-<div class="smaller-page-title-box">
-  <h1 class="page-header">users</h1>
+
+<div class="container">
+
+<div class="row">
+  <div class="col-md-4"></div>
+  <div class="col-md-4">
+
+  </div>
+  <div class="col-md-4"></div>
+
 </div>
 
-<div class="logout">
-  <%= link_to "Cancel", "/songs", class: "logout-link" %>
-</div>
+  <div class="row">
+    <div class="col-xs-4"></div>
+    <div class="col-xs-4">
+      <h3>Who are you?</h3>
+      <%= form_for @user, url:({action: "signed_in"}), class:"add-song-form" do |f| %>
+      <div class="form-group">
+        <%= f.collection_select(:id, User.all, :id, :name, { prompt: "Select your name: "}, {class: "form-control"})  %>
+      </div>
+        <%= f.submit "Login", class:"btn btn-default" %>
+      <% end %>
+      <h3>Not listed?</h3>
+      <%= link_to "Add a User", new_user_path, method: :get, class:"btn btn-default" %>
 
-
-<div class="add-song-form-box">
-
-<h2>Who are you?</h2>
-
-<%= form_for @user, url:({action: "signed_in"}), class:"add-song-form" do |f| %>
-
-      <%= f.collection_select(:id, User.all, :id, :name, prompt: "Select your name: ")  %>
-
-  <%= f.submit "Login" %>
-<% end %>
-
-<h3>Not listed?</h3>
-<%= link_to "Add a User", new_user_path, method: :get %>
-
+    </div>
+    <div class="col-xs-4"></div>
+  </div>
 </div>

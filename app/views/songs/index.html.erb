@@ -1,82 +1,72 @@
-<div class="image-container">
-  <%= image_tag("music_5.jpeg", class: "hero-image") %>
-</div>
-
-<div class="page-title-box">
-  <h1 class="page-header">boombox.rb</h1>
-</div>
-
-<% if session[:user_id] != nil %>
-<div class="logout">
-  <%= link_to "Logout", "/users/logout", class: "logout-link" %>
-</div>
-<% end %>
+<div class="jumbotron special-jum jumbotron-index">
 
 
-<% if session[:user_id] != nil %>
-  <span id="hi-name">Hi <%= User.find(session[:user_id]).name %></span>
-  <div class="button-title-box">
-    <%= link_to "Suggest a Song", new_song_path, method: :get, class: "add-song-button" %>
+    <div class="logout">
+      <% if session[:user_id] != nil %>
+        <%= link_to "Logout", "/users/logout", class: "logout-link" %>
+      <% end %>
+    </div>
+
+
+  <h1 class="main-title">boombox.rb</h1>
+
+  <div class="col-md-4"></div>
+  <div class="col-md-4 signed-in">
+
+    <% if session[:user_id] != nil %>
+      <span id="hi-name">Hi, <%= User.find(session[:user_id]).name %></span>
+
+      <div class="button-title-box">
+        <%= button_to "Suggest a Song", new_song_path, method: :get, class: "btn btn-override" %>
+      </div>
+    <% else %>
+      <div class="button-title-box">
+        <%= button_to "Sign In", "/users/signin", method: :get, class: "btn" %>
+      </div>
+    <% end %>
   </div>
-<% else %>
 
-  <div class="button-title-box">
-    <%= link_to "Sign In", "/users/signin", method: :get, class: "add-song-button" %>
-  </div>
-<% end %>
+  <div class="col-md-4"></div>
+</div>
 
 
-<div class="song-list">
-
-<table>
+<div class="container">
+<div class="row">
+<table class="table">
   <thead>
     <tr>
-      <th>
-      </th>
-      <th>
-      Votes
-      </th>
-      <th id="song-name-title">
-        &nbsp; &nbsp; Song
-      </th>
-      <th>
-        Artist
-      </th>
-      <th class="song-user">
-        Submitted By
-      </th>
+      <th></th>
+      <th>Votes</th>
+      <th>Song</th>
+      <th>Artist</th>
+      <th>Submitted By</th>
+      <% if session[:user_id] != nil %>
+        <th>Delete</th>
+      <% end %>
     </tr>
   </thead>
   <% @songs.each do |song| %>
-    <tr class="song-item">
+    <tr class="row-height">
       <td>
         <% if session[:user_id] != nil %>
           <% if @voted_for != nil %>
             <% if !@voted_for.include? song.id %>
-                <%= button_to("/songs/#{song.id}", method: :patch, title: "Upvote"){fa_icon("thumbs-up lg")} %>
+                <%= button_to("/songs/#{song.id}", method: :patch, title: "Upvote", class:"btn btn-default btn-circle"){fa_icon("thumbs-up lg")} %>
             <% end %>
           <% else %>
             <%= button_to("/songs/#{song.id}", method: :patch, title: "Upvote"){fa_icon("thumbs-up lg")} %>
           <% end %>
         <% end %>
-
       </td>
-      <td id="song-votes">
-        <%= song.votes %>
-      </td>
-      <td id="song-name">
-        <%= song.name %>
-      </td>
-      <td id="song-artist">
-        <%= song.artist %>
-      </td>
-      <td class="song-user">
+      <td><span class="badge alert-danger"><%= song.votes %></span></td>
+      <td><%= song.name %></td>
+      <td><%= song.artist %></td>
+      <td>
         <%= link_to song.user.name, user_path(song.user_id)  %>
       </td>
-      <td id="delete-button">
+      <td>
         <% if song.user.id == session[:user_id].to_i %>
-
-          <%= button_to("/songs/#{song.id}", onclick: "return confirm('Are you sure you want to remove this song?')", method: :delete, title: "Delete") {fa_icon("minus-circle")} %>
+          <%= button_to("/songs/#{song.id}", onclick: "return confirm('Are you sure you want to remove this song?')", method: :delete, class: "btn btn-default", title: "Delete") {fa_icon("minus-circle")} %>
         <% end %>
       </td>
     </tr>
@@ -85,10 +75,6 @@
 
 </div>
 
-
-
-<footer>
-  <iframe class="video-player" width="420" height="315" frameborder="0" autoplay
-  src="https://www.youtube.com/embed/<%= @first_song %>?playlist=<%= @song_urls_list %>&modestbranding=1&color=white&iv_load_policy=3">
+<iframe class="video-player su-youtube su-responsive-media-yes" width="420" height="315" frameborder="0" autoplay
+src="https://www.youtube.com/embed/<%= @first_song %>?playlist=<%= @song_urls_list %>&modestbranding=1&color=white&iv_load_policy=3">
 </iframe>
-</footer>
