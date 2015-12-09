@@ -17,7 +17,7 @@
       <span id="hi-name">Hi, <%= User.find(session[:user_id]).name %></span>
 
       <div class="button-title-box">
-        <%= button_to "Suggest a Song", new_song_path, method: :get, class: "btn" %>
+        <%= button_to "Suggest a Song", new_song_path, method: :get, class: "btn btn-override" %>
       </div>
     <% else %>
       <div class="button-title-box">
