@@ -10,7 +10,7 @@ class UsersController < ApplicationController
       User.create(name: @spotify_user.id)
       session[:user_id] = User.last.id
     else
-      session[:user_id] = user.id
+      session[:user_id] = user[0].id
     end
     # Now you can access user's private data, create playlists and much more
 

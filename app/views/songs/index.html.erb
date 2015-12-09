@@ -21,8 +21,7 @@
       </div>
     <% else %>
       <div class="button-title-box">
-        <%= button_to "Sign In", "/users/signin", method: :get, class: "btn" %>
-        <%= link_to 'Sign in with Spotify', '/auth/spotify' %>
+        <%= button_to "Sign In With Spotify", "/auth/spotify", method: :get, class: "btn" %>
       </div>
 
     <% end %>
@@ -83,3 +82,10 @@
 <iframe class="video-player su-youtube su-responsive-media-yes" width="420" height="315" frameborder="0" autoplay
 src="https://www.youtube.com/embed/<%= @first_song %>?playlist=<%= @song_urls_list %>&modestbranding=1&color=white&iv_load_policy=3">
 </iframe>
+
+
+<% if session[:user_id].nil? %>
+  <footer>
+    Don't have a Spotify account? <%= link_to "Sign in with email instead", users_signin_path %>
+  </footer>
+<% end %>
