@@ -34,6 +34,18 @@
           <%= f.text_field :name, class:"form-control" %>
         </div>
         <div class="form-group">
+          <%= f.label :email %>
+          <%= f.email_field :email, class:"form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :password %>
+          <%= f.text_field :password, class:"form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :password_confirmation %>
+          <%= f.text_field :password_confirmation, class:"form-control" %>
+        </div>
+        <div class="form-group">
 
           <%= f.label :fav_genres, "Favorite genres" %>
           <%= f.text_field :fav_genres, class:"form-control" %>

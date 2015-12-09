@@ -22,13 +22,18 @@
     <% else %>
       <div class="button-title-box">
         <%= button_to "Sign In", "/users/signin", method: :get, class: "btn" %>
+        <%= link_to 'Sign in with Spotify', '/auth/spotify' %>
       </div>
+
     <% end %>
   </div>
 
   <div class="col-md-4"></div>
 </div>
 
+<% if @spotify_user != nil %>
+  <h1><%= @spotify_user.email %></h1>
+<% end %>
 
 <div class="container">
 <div class="row">

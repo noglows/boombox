@@ -53,6 +53,8 @@
           <%= f.label :song_url, "Youtube Link" %>
           <%= f.text_field :song_url, class:"form-control" %>
         </div>
+          <%= f.hidden_field :user_id, :value =>  session[:user_id] %>
+          <%= f.hidden_field :votes, :value => 0 %>
           <%= f.submit "Suggest this song", class: "btn btn-default" %>
       <% end %>
     </div>
