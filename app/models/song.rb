@@ -8,6 +8,7 @@ class Song < ActiveRecord::Base
   validates :artist, presence: true
   # validates :artist, length: { minimum: 3 }
   validates :song_url, presence: true
+  validates :user_id, presence: true
 
   validates_url_format_of :song_url, :message => "is not a valid URL"
 
