@@ -21,7 +21,7 @@ sample_users = [
   {name: "Jessica", fav_genres: "rap"},
   {name: "Lolita", fav_genres: "reggaeton"},
   {name: "Kepler"},
-  {name: "Daphne"}
+  {name: "Daphne", email: "1@1.com"}
 ]
 
 sample_songs.each do |song|
