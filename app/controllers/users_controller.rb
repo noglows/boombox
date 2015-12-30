@@ -135,7 +135,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.permit(user:[:id, :name, :fav_genres])
+    params.permit(user:[:id, :name, :fav_genres, :password])
   end
 
   def song_params
