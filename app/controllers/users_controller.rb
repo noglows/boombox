@@ -52,8 +52,9 @@ class UsersController < ApplicationController
   end
 
   def signed_in
-    new_params = user_params[:user]
-    session[:user_id] = new_params[:id]
+    user = User.find_by_email(params[:user][:email])
+    session[:user_id] = user.id unless user.nil?
+
     redirect_to "/songs"
   end
 
