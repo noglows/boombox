@@ -20,7 +20,8 @@ sample_songs = [
 sample_users = [
   {name: "Jessica", fav_genres: "rap"},
   {name: "Lolita", fav_genres: "reggaeton"},
-  {name: "Kepler"}
+  {name: "Kepler"},
+  {name: "Daphne", email: "1@1.com"}
 ]
 
 sample_songs.each do |song|
@@ -28,5 +29,7 @@ sample_songs.each do |song|
 end
 
 sample_users.each do |user|
-  User.create(user)
+  user = User.create(user)
+  user.password = "1"
+  user.save
 end

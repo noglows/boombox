@@ -42,12 +42,18 @@ gem 'rspotify'
 
 gem 'rails_12factor'
 
+# handles http stuff for REST apis
+gem 'httparty', '~> 0.13.7'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   gem 'pry'
   gem 'better_errors'
   gem 'binding_of_caller'
+
+  # Load environment variables in development
+  gem 'dotenv-rails', '~> 2.0', '>= 2.0.2'
 
   # Rspec
   gem 'rspec-rails'
