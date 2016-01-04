@@ -57,7 +57,7 @@ group :development, :test do
 
   # Rspec
   gem 'rspec-rails'
-  #gem 'simplecov', :require => false
+  gem 'simplecov', :require => false
 end
 
 group :development do
