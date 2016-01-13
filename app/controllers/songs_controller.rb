@@ -21,6 +21,7 @@ class SongsController < ApplicationController
 
   def create
     @song = Song.new(song_params[:song])
+    @song.name = @song.get_title
     if @song.save
       redirect_to "/songs"
     else
@@ -46,7 +47,7 @@ class SongsController < ApplicationController
     user_id = session[:user_id]
     user = User.find(user_id)
     user.update_voted_for(id)
-    
+
     redirect_to "/songs"
   end
 

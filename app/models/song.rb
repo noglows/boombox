@@ -14,7 +14,13 @@ class Song < ActiveRecord::Base
 
   validates_format_of :song_url, with: /watch\?v=(.*?)(?:&feature|\Z)/, :message => "does not seem to be a Youtube link"
 
+  def get_title
+    song_id = self.song_url.sub(/^.*?v=/, '')
+    url = "https://www.googleapis.com/youtube/v3/videos?part=snippet&id=#{song_id}&key=#{ENV['GOOGLE_KEY']}"
+    response = HTTParty.get(url, verify: false).parsed_response
 
+    response["items"].first["snippet"]["title"] unless response["items"].empty?
+  end
 
   def self.return_urls
     # Pull the song list in order of votes

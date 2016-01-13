@@ -19,3 +19,6 @@
 # Mac Stuff
 *.DS_Store
 *.keep
+
+# Ignore Environment variables
+.env
